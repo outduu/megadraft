@@ -12,39 +12,38 @@ import {
   hashHistory,
   Router,
   Route,
-  IndexRoute,
-  Link
+  IndexRoute
 } from "react-router";
 import Scroll from "react-scroll";
-import { StickyContainer, Sticky } from "react-sticky";
+import { StickyContainer } from "react-sticky";
 
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import FlatButton from "material-ui/FlatButton";
-import { darkBlack, white, yellow600 } from "material-ui/styles/colors";
-import MenuItem from "material-ui/MenuItem";
-import RaisedButton from "material-ui/RaisedButton";
-import Popover from "material-ui/Popover";
-import Divider from "material-ui/Divider";
-import Menu from "material-ui/Menu";
-import { Toolbar, ToolbarGroup } from "material-ui/Toolbar";
+// import FlatButton from "material-ui/FlatButton";
+// import { darkBlack, white, yellow600 } from "material-ui/styles/colors";
+// import MenuItem from "material-ui/MenuItem";
+// import RaisedButton from "material-ui/RaisedButton";
+// import Popover from "material-ui/Popover";
+// import Divider from "material-ui/Divider";
+// import Menu from "material-ui/Menu";
+// import { Toolbar, ToolbarGroup } from "material-ui/Toolbar";
 
 import Home from "./components/home";
 import Docs from "./components/docs";
 import MyRawTheme from "./components/megadrafttheme";
 import Example from "./components/example";
-import Header from "./components/header";
+// import Header from "./components/header";
 import { highlightCode } from "./components/highlightCode";
-import LetsRockArrow from "./components/icons/arrow-down";
+// import LetsRockArrow from "./components/icons/arrow-down";
 
-import injectTapEventPlugin from "react-tap-event-plugin";
+// import injectTapEventPlugin from "react-tap-event-plugin";
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
 // Check this repo:
 // https://github.com/zilverline/react-tap-event-plugin
-injectTapEventPlugin();
-const LinkScroll = Scroll.Link;
-const Element = Scroll.Element;
+// injectTapEventPlugin();
+// const LinkScroll = Scroll.Link;
+// const Element = Scroll.Element;
 const scroller = Scroll.scroller;
 
 class Page extends React.Component {
@@ -106,130 +105,12 @@ class Page extends React.Component {
   }
 
   render() {
-    const { router } = this.props;
-    this.isHome = router.isActive("/", true);
+    // const { router } = this.props;
+    // this.isHome = router.isActive("/", true);
 
     return (
-      <div>
-        {this.isHome ? <Header /> : null}
+      <div className="sss">
         <StickyContainer>
-          {this.isHome ? (
-            <div>
-              <LinkScroll
-                className="hero__call-to-action"
-                to="appbar"
-                spy={true}
-                smooth={true}
-                duration={600}
-              >
-                LET'S ROCK
-                <div className="hero__arrow-call-to-action">
-                  <LetsRockArrow />
-                </div>
-              </LinkScroll>
-            </div>
-          ) : null}
-          <Element name="appbar">
-            <Sticky style={{ zIndex: 1100 }}>
-              <Toolbar
-                style={{
-                  background: this.state.content ? white : darkBlack,
-                  border: "solid 1px rgba(0, 0, 0, 0.1)"
-                }}
-              >
-                {this.state.content ? (
-                  <ToolbarGroup firstChild={true} className="label">
-                    <FlatButton
-                      label="Home"
-                      containerElement={<Link to="/" />}
-                    />
-                    <RaisedButton
-                      onTouchTap={this.handleTouchTap}
-                      label="Documentation"
-                      style={{ boxShadow: white }}
-                    />
-                    <Popover
-                      open={this.state.open}
-                      anchorEl={this.state.anchorEl}
-                      anchorOrigin={{ horizontal: "left", vertical: "bottom" }}
-                      targetOrigin={{ horizontal: "left", vertical: "top" }}
-                      onRequestClose={this.handleRequestClose}
-                    >
-                      <Menu>
-                        <MenuItem
-                          primaryText="Overview & Usage"
-                          onTouchTap={this.handleRequestClose}
-                          containerElement={<Link to="/docs/overview" />}
-                        />
-                        <MenuItem
-                          primaryText="Customization"
-                          onTouchTap={this.handleRequestClose}
-                          containerElement={<Link to="/docs/customization" />}
-                        />
-                        <MenuItem
-                          primaryText="Plugins"
-                          onTouchTap={this.handleRequestClose}
-                          containerElement={<Link to="/docs/plugins" />}
-                        />
-                        <MenuItem
-                          primaryText="Custom Entities"
-                          onTouchTap={this.handleRequestClose}
-                          containerElement={<Link to="/docs/custom-entities" />}
-                        />
-                        <MenuItem
-                          primaryText="Saving & Loading"
-                          onTouchTap={this.handleRequestClose}
-                          containerElement={<Link to="/docs/saving-loading" />}
-                        />
-                        <Divider />
-                        <MenuItem
-                          primaryText="Draft.js"
-                          onTouchTap={this.handleRequestClose}
-                          href="http://draftjs.org"
-                          target="_blank"
-                        />
-                        <MenuItem
-                          primaryText="React"
-                          onTouchTap={this.handleRequestClose}
-                          href="https://facebook.github.io/react/"
-                          target="_blank"
-                        />
-                      </Menu>
-                    </Popover>
-                    <FlatButton
-                      label="Slack channel"
-                      href="https://draftjs.slack.com/messages/megadraft/"
-                      target="_blank"
-                    />
-                    <FlatButton
-                      label="Repository"
-                      href="https://github.com/globocom/megadraft"
-                      target="_blank"
-                    />
-                  </ToolbarGroup>
-                ) : (
-                  <ToolbarGroup />
-                )}
-
-                {this.isHome ? (
-                  <ToolbarGroup>
-                    <FlatButton
-                      label={
-                        this.state.content ? "VIEW CONTENT JSON" : "EDITOR"
-                      }
-                      onClick={this.handleClick}
-                      labelStyle={{
-                        color: this.state.content ? darkBlack : yellow600
-                      }}
-                    />
-                  </ToolbarGroup>
-                ) : (
-                  <ToolbarGroup />
-                )}
-              </Toolbar>
-            </Sticky>
-          </Element>
-
           <div className={this.state.content ? "" : "container--dark"}>
             {React.cloneElement(this.props.children, {
               activeContent: this.state.content

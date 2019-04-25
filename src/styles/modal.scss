@@ -110,3 +110,106 @@
     }
   }
 }
+
+/*
+ * Copyright (c) 2019, Chinnakorn Parkot <hedis2019.c@gmail.com>
+ *
+ * License: MIT
+ */
+.megadraft-editor{
+  .image-figure{
+    img{
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .block__input{
+      width: calc(100% - 30px);
+      padding: 8px 20px 8px 10px;
+    }
+  }
+}
+
+.image-modal{
+
+  &.overlay{
+    z-index:2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all .2s;
+    background-color: rgba(0,0,0,0);
+    &.after-open{
+      background-color: rgba(0,0,0,0.4);
+    }
+    &.before-close{
+      background-color: rgba(0,0,0,0);
+    }
+  }
+
+  &.upload{
+    background: white;
+    width: auto;
+    margin: -50vh auto auto;
+    padding: 20px;
+    max-width: 300px;
+    transition: all .2s;
+    &.after-open{
+      margin-top: 30vh;
+    }
+    &.before-close{
+      margin-top: -50vh;
+    }
+  }
+  div.dropzone{
+    border: 3px dashed grey;
+    padding:20px;
+    background-color: white;
+    font-family: Open Sans, arial, sans-serif;
+    color: grey;
+    position:relative;
+    cursor: pointer;
+    .inner-block{
+      display: none;
+      opacity: 0;
+      transition: all .2s;
+      position:absolute;
+      width:100%;
+      height:100%;
+      background: white;
+      top: 0;
+      left: 0;
+      line-height: 105px;
+      text-align: center;
+      text-transform: uppercase;
+      color: white;
+    }
+    .waiting{
+      font-size: 36px;
+      &.show{
+        display: block;
+        opacity: 1;
+        color: black;
+      }
+    }
+    &.reject{
+      border: 3px dashed #F44336;
+      color: white;
+      .rejected{
+        color: #F44336;
+        display: block;
+        opacity: 1;
+      }
+    }
+    &.accept{
+      border: 3px dashed #4CAF50;
+      .supported{
+        color: #4CAF50;
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+}
+
