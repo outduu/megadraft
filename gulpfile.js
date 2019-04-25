@@ -16,7 +16,7 @@ const webpackConfig = require("./webpack.config.js");
 gulp.task("default", ["dev-server"]);
 
 const host = "localhost";
-const port = 8080;
+const port = 8083;
 
 // http://stackoverflow.com/questions/30225866/gulp-webpack-dev-server-callback-before-bundle-is-finished
 const hookStream = function(stream, data, cb) {
